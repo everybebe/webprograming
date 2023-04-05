@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.4.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+
+function proc1(){
+	
+	ptag = $('<p class="pp" onclick="pclick(this)">Hello jQuery</p>');
+	$('#result1').append(ptag); //appendChild(ptag)
+	
+	//$(ptag).appendTo($('#result1'));
+	
+}
+
+function pclick(pel){ //pel - 돔객체변수
+	pel.style.background = "yellow";
+	
+	$(pel).css('color', 'red');
+}
+
+function proc2(){
+	//ptag = $("<p></p>", { })
+	ptag = $("<p/>", {
+				"class" : "pp2",
+				"text" : "Hello jQuery",
+				"click" : function() {
+					$(this).css('background' , 'pink');
+	}	
+	})
+	
+	$('#result3').append(ptag);
+}
+
+function proc3() {
+	ptag = $("<p/>", {
+		"class" : "pp2",
+		"text" : "Hello jQuery"
+	
+})
+
+	$('#result3').append(ptag);
+
+}
+
+function proc4() {
+	 imgs = ["../images/jQuery.jpg", "../images/꽃.jpg", "../images/소우주.jpg",
+		 "../images/img1.jpg","../images/img2.jpg","../images/img3.jpg",
+		 "../images/img4.jpg","../images/img5.jpg","../images/Sony1.jpg"]
+
+	rand = parseInt(Math.random() * imgs.length);
+	
+	valt = imgs[rand];
+	
+	start = valt.lastIndexOf("/")+1;
+	end = valt.lastIndexOf(".");
+	valt = valt.slice(start,end);
+	 
+	vimg = $('<img>' , { 
+		"src" : imgs[rand],
+		"alt" : valt,
+		"class" : "image"
+	})
+
+	$('#result4').append(vimg);
+
+}
+
+$(document).ready(function(){
+	/* $('.pp2').on('click', function(){
+		alert("hello");
+	})  */
+	
+	//#pp2가 실행 후에 동적으로 새롭게 생선된 요소이고, 새로운 요소의 이벤트 핸들러 작성
+	$(document).on('click', '.pp2', function(){
+		alert("hello");
+	})
+	$(document).on('click', '.image' , function(){
+		$(this).css('border', '3px solid red'); /* 클릭한 이미지가 this */
+	})
+	
+})
+
+
+
+</script>
+
+<style type="text/css">
+img {
+	width: 100px;
+	height: 100px;
+	margin: 5px;
+}
+</style>
+</head>
+
+<body>
+
+
+	<div class="box">
+		<p>
+		새로운 요소를 생성한다.<br>
+		ptag = $(html문장)<br>
+		$('#result1').append(ptag)<br>
+		ptag = $('&lp;p class="pp" onclick="pclick(this)">Hello jQuery&lt;/p>');
+		</p>
+	
+		<input type="button" value="확인" onclick="proc1()"> <br>
+		<br>
+
+		<div class="result" id="result1"></div>s
+	
+	</div>
+	
+	<div class="box">
+		<pre>
+		새로운 요소를 생성한다<br>
+		$('태그이름',{속성들})<br>
+		
+			ptag = $("&lp;p/>", {
+				"class" : "pp2",
+				"text" : "Hello jQuery",
+				
+	})
+	
+		</pre>
+	
+		<input type="button" value="확인" onclick="proc2()"> <br>
+		<br>
+
+		<div class="result" id="result2"></div>
+	
+	</div>
+	
+	
+	<div class="box">
+		<pre>
+		새로운 요소를 생성한다<br>
+		$('태그이름',{속성들})<br>
+		
+			ptag = $("&lp;p/>", {
+				"class" : "pp2",
+				"text" : "Hello jQuery",
+				"click" : function() {
+					$(this).css('background' , 'pink');
+	}	
+	})
+	
+	$('#result2').append(ptag);
+    }
+	
+		</pre>
+	
+		<input type="button" value="확인" onclick="proc3()"> <br>
+		<br>
+
+		<div class="result" id="result3"></div>
+	
+	</div>
+	
+	
+	<div class="box">
+		<pre>
+
+	
+		</pre>
+	
+		<input type="button" value="확인" onclick="proc4()"> <br>
+		<br>
+
+		<div class="result" id="result4"></div>
+	
+	</div>
+</body>
+</html>

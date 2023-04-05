@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.4.min.js"></script>
+<script>
+
+//function clickhide(item) {
+clickhide = (item) => {  //item은 돔 객체
+	
+
+	//실행 불가능
+	//item.css('display', 'none');
+	
+	//실행가능
+	item.style.display = "none";
+	
+	//실행가능
+	//$(item).hide();
+	// $(item).css('display', 'none');
+}	
+	
+
+
+
+
+//$(document).ready(() => {    //() => 랑 function() 랑 같음
+$(function() {
+	
+	$('#result3 h1').on('click', function(){  //람다표현식을 쓸 땐 this를 사용 못함
+		
+		//this는 dom객체 변수, 실행 가능 
+		//this.style.display = "none";   
+		
+		//this는 dom객체 변수 - jquery메소드 css(), hide()를 호출할 수 없다.
+		//실행 불가능
+		//this.css('display', 'none');
+		//this.hide();
+		
+		//실행 불가능
+		//$(this).style.display = "none";
+		
+		//실행 가능
+		$(this).css('display', 'none')
+		$(this).hide();
+	})
+	
+	
+	$('#btn1').on('click', () => {
+		//전체 배경색을 변경 $('*').css('background','yellow');
+		// h1요소의 글자색을 파랑
+		//id가 para인 요소의 글자색은 녹색
+		//class 가 sample요소의 글자색은 빨강
+		
+		//id가 result1인 요소의 배경색을 변경
+		$('#result1').css('background','yellow');
+		$('h1').css('color', 'blue');
+		$('#para').css('color', 'green');
+		$('.sample').css('color', 'red');
+	})
+	
+})
+
+
+</script>
+</head>
+
+<body>
+
+
+	<div class="box">
+		<p></p>
+	
+		<input type="button" value="확인" id="btn1"> 
+		<br><br>
+
+		<div class="result" id="result1">
+			<h1> 제목입니다 </h1>
+			<h2 id="para"> 작은 제목입니다 </h2>
+			<h2 class="sample"> 샘플입니다 </h2>		
+		</div>
+	
+	</div>
+	
+	
+	<div class="box">
+		<p>
+		h1태그 각각에 onclick="clickhide(this)" 를 설정하여 함수를 호출 한다 <br>
+		&lt;h1 onclick="clickhide(this)"> 클릭하면 사라집니다1 &lt;/h1>
+		</p>
+	
+		<div class="result" id="result2">
+			<h1 onclick="clickhide(this)"> 클릭하면 사라집니다1 </h1>
+			<h1 onclick="clickhide(this)"> 클릭하면 사라집니다2 </h1>
+			<h1 onclick="clickhide(this)"> 클릭하면 사라집니다3 </h1>
+			<h1 onclick="clickhide(this)"> 클릭하면 사라집니다4 </h1>
+			<h1 onclick="clickhide(this)"> 클릭하면 사라집니다5 </h1>
+			<h1 onclick="clickhide(this)"> 클릭하면 사라집니다6 </h1>
+			<h1 onclick="clickhide(this)"> 클릭하면 사라집니다7 </h1>
+			<h1 onclick="clickhide(this)"> 클릭하면 사라집니다8 </h1>
+			<h1 onclick="clickhide(this)"> 클릭하면 사라집니다9 </h1>
+			<h1 onclick="clickhide(this)"> 클릭하면 사라집니다10 </h1>
+		</div>
+	</div>	
+	
+	<div class="box">
+		<p>
+		jquery에서 h1태그를 검색하여 이벤트 핸들러를 설정 <br>
+		</p>
+	
+		<div class="result" id="result3">
+			<h1> 클릭하면 사라집니다1 </h1>
+			<h1> 클릭하면 사라집니다2 </h1>
+			<h1> 클릭하면 사라집니다3 </h1>
+			<h1> 클릭하면 사라집니다4 </h1>
+			<h1> 클릭하면 사라집니다5 </h1>
+			<h1> 클릭하면 사라집니다6 </h1>
+			<h1> 클릭하면 사라집니다7 </h1>
+			<h1> 클릭하면 사라집니다8 </h1>
+			<h1> 클릭하면 사라집니다9 </h1>
+			<h1> 클릭하면 사라집니다10 </h1>
+		</div>
+	</div>		
+	
+</body>
+</html>
